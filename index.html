@@ -39,7 +39,7 @@
 </header>
 
 <!-- Background Image -->
-<body background='https://images.squarespace-cdn.com/content/v1/59394df0bf629afcc7dd4bed/1503010573168-1QPOBHEAAWP6SN9I6WI6/ke17ZwdGBToddI8pDm48kB2qThcsGo8KlX0xCX5xL817gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UR_7C_D3iolpcC0vupphd7yaHSDrJLrfe7gK9DncrfuhhbgHIlOZnMbp8Juz_4NGyw/CircuitBackground_DARK.jpg'>
+<body style="background-image: url(./test.webp); background-repeat: no-repeat; background-size: cover;">
     <center>
 		<!-- Setting Heading -->
 		<h1 style="color:white;">VB#0853 Warehouse Dashboard</h1>
@@ -78,7 +78,7 @@
 		</h2>
 		
 			<!-- Setting Table -->
-			<table id="table1" border='20'style="width: 83%; height: 180px; border: 20px outset darkslategray;">
+			<table id="table1" style="width: 83%; height: 180px; border: 20px outset darkslategray;">
 				<tr style="font-family: 'Raleway'; color:gold; font-size: 15px; background-color:Teal;">
                 	<th>Order ID</th>
                 	<th>Item</th>
@@ -102,13 +102,7 @@
 
 <script type="text/javascript">
     /////////////Ajax Requests////////////
-    $(document).ready(function(){
-		// Fetch the initial data
-		work();
-		
-		// Fetch every 5 second
-		setInterval(work, 5000);
-    });
+	setInterval(work, 10000);
 	
 	//Loading Google Charts
 	google.charts.load("current", {packages:['corechart']});
@@ -144,7 +138,7 @@
 	});
 	
 	//Function created for map related tasks
-	function for_map(container, map, jsonDataObject)
+	async function for_map(container, map, jsonDataObject)
 	{
 		
 		//Extracting data individually and storing in array
@@ -196,7 +190,7 @@
 	}
 	
 	//Function created for chart related tasks
-	function refreshChart(jsonDataObject, graph_arr, bar_color)
+	async function refreshChart(jsonDataObject, graph_arr, bar_color)
 	{
 		  
 		  //Setting color for the coloumns of graph according to priority of items
@@ -239,7 +233,7 @@
 	}
 	
 	//Function created for table related tasks
-	function refreshTable(jsonDataObject, trHTML)
+	async function refreshTable(jsonDataObject, trHTML)
 	{
 		
 		//Putting data in table
@@ -264,7 +258,7 @@
 	
 	
 	
-	function work()
+	async function work()
 	{
 		var container = L.DomUtil.get('map');
 
@@ -315,7 +309,7 @@
 				   
 				};
 				
-				print(json_data)
+				// print(json_data)
 				jsonDataObject.push(json_data);
 				
 				for_map(container, map, jsonDataObject);
